@@ -20,6 +20,6 @@
     </head>
     <body>
         <jsp:include page="header.jsp" />
-        <a href="addNews.jsp"> Add News</a>
+        
     </body>
 </html>

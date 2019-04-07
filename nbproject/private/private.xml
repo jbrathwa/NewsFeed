@@ -3,9 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Jayraj%20Rathwa/Documents/NetBeansProjects/NewsFeed/web/index.jsp</file>
+            <file>file:/C:/Users/Jayraj%20Rathwa/Documents/NetBeansProjects/NewsFeed/src/java/newsclient/LoginController.java</file>
             <file>file:/C:/Users/Jayraj%20Rathwa/Documents/NetBeansProjects/NewsFeed/web/addNews.jsp</file>
+            <file>file:/C:/Users/Jayraj%20Rathwa/Documents/NetBeansProjects/NewsFeed/build/generated-sources/jax-ws/service/ObjectFactory.java</file>
+            <file>file:/C:/Users/Jayraj%20Rathwa/Documents/NetBeansProjects/NewsFeed/src/java/newsclient/NewsController.java</file>
             <file>file:/C:/Users/Jayraj%20Rathwa/Documents/NetBeansProjects/NewsFeed/web/news.jsp</file>
+            <file>file:/C:/Users/Jayraj%20Rathwa/Documents/NetBeansProjects/NewsFeed/src/java/newsclient/RegisterController.java</file>
+            <file>file:/C:/Users/Jayraj%20Rathwa/Documents/NetBeansProjects/NewsFeed/web/register.jsp</file>
+            <file>file:/C:/Users/Jayraj%20Rathwa/Documents/NetBeansProjects/NewsFeed/web/header.jsp</file>
+            <file>file:/C:/Users/Jayraj%20Rathwa/Documents/NetBeansProjects/NewsFeed/build/generated-sources/jax-ws/service/News.java</file>
+            <file>file:/C:/Users/Jayraj%20Rathwa/Documents/NetBeansProjects/NewsFeed/web/dashboard.jsp</file>
             <file>file:/C:/Users/Jayraj%20Rathwa/Documents/NetBeansProjects/NewsFeed/web/topic.jsp</file>
         </group>
     </open-files>

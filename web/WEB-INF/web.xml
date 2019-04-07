@@ -8,6 +8,10 @@
         <servlet-name>LoginController</servlet-name>
         <servlet-class>newsclient.LoginController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewsController</servlet-name>
+        <servlet-class>newsclient.NewsController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/RegisterController</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/LoginController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewsController</servlet-name>
+        <url-pattern>/NewsController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

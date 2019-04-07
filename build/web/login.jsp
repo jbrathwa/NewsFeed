@@ -22,7 +22,7 @@
         
         <div class="container">
             <div class="jumbotron">
-                <form action="LoginController" method="post">
+                <form action="LoginController?login=0" method="post">
                   <div class="form-group">
                       <label for="username">Username:</label>
                     <input type="text" class="form-control" name="username" id="username"  placeholder="Enter Username">

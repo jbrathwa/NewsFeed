@@ -3,7 +3,8 @@
     Created on : Apr 6, 2019, 11:18:37 PM
     Author     : Jayraj Rathwa
 --%>
-
+<%@page import="java.util.Base64" %>
+<%@page import="service.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,16 +20,29 @@
     </head>
     <body>
          <jsp:include page="header.jsp" />
-         
+           <% NewsService service = new NewsService();
+                   INewsService client = service.getBasicHttpBindingINewsService();
+                   
+                   String idstr = request.getParameter("id");
+                   Integer id = Integer.getInteger(idstr);
+                   News n = client.getNews(id);
+                   
+                    byte[] img = n.getImagedata().getValue();
+                    String imgstr ="data:image/jpeg;base64,"+ Base64.getEncoder().encodeToString(img);
+           %>
+           
          <div class="container">
              <div class="jumbotron">
-                 <h5>TOPIC</h5>
+                 <h5><%=  n.getTag().getValue()  %></h5>
                  <div class="col-md-12">
                  <div class="card" style="height: 100%;">
+                     <img src="<%=imgstr%>" class="card-img-top"></img>
                      <div class="card-body">
-                         <h4 class="card-title">Title</h4>
-                         <h6 class="card-subtitle mb-2 text-muted">time</h6>
-                         <p class="card-text">Some quick example text to build on the card title and make up the bulk Some quick example text to build on the card title and make up the bulk</p>
+                         <h4 class="card-title"><%=  n.getTitle().getValue()  %></h4>
+                         <h6 class="card-subtitle mb-2 text-muted"><%=  n.getDatetime().toString()   %></h6>
+                          <h6 class="card-subtitle mb-2 text-muted"><%=  n.getNewsCity().getValue()   %></h6>
+                          <br>
+                           <p class="card-text"><%=  n.getDescription().getValue()  %></p>
                      </div>
                  </div>
                  </div>

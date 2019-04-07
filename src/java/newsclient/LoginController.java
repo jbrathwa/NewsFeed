@@ -33,6 +33,9 @@ public class LoginController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        int login = Integer.parseInt(request.getParameter("login"));
+        
+        if(login==0){
         String username = request.getParameter("username");
         String pass = request.getParameter("password");
         
@@ -53,6 +56,17 @@ public class LoginController extends HttpServlet {
         }
         else{
             response.sendRedirect("login.jsp");
+        }
+        
+        }
+        else if(login==1){
+            HttpSession session = request.getSession();
+            Integer id = (Integer)session.getAttribute("authorid");
+            if(id != null){
+                session.setAttribute("authorid", null);
+            }
+            response.sendRedirect("index.jsp");
+            
         }
         
     }

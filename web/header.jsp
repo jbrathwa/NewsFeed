@@ -50,7 +50,13 @@
         <li class="nav-item"> <a class="nav-link" href="topic.jsp?topic=Health">Health</a> </li>
       </ul>
         <ul class="nav justify-content-end">
-            <li class="nav-item"><a class="btn btn-success" href="login.jsp" role="button">Login</a></li>  
+            <li class="nav-item">
+                <% if(session.getAttribute("authorid") == null){ %>
+                    <a class="btn btn-success" href="login.jsp" role="button">Login</a>
+                <% }else{ %>
+                    <a class="btn btn-success" href="LoginController?login=1" role="button">Logout</a>
+                <% } %>    
+            </li>  
         </ul>  
     </div>
   </div>

@@ -3,7 +3,7 @@
     Created on : Apr 7, 2019, 5:27:19 AM
     Author     : Jayraj Rathwa
 --%>
-
+<%@page import="java.util.Base64" %>
 <%@page import="service.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
@@ -20,8 +20,8 @@
         <style>
             .profile {
                 border-radius: 50%;
-                height: 200px;
-                width: 200px;
+                height: 150px;
+                width: 150px;
             }
         </style>
     </head>
@@ -32,24 +32,41 @@
            Integer id = (Integer)session.getAttribute("authorid");
            Author a = client.getAuthor(id);
            
-           String img = a.getImagedata().toString();
+           byte[] img = a.getImagedata().getValue();
+           String imgstr ="data:image/jpeg;base64,"+ Base64.getEncoder().encodeToString(img);
            
+           ArrayOfNews newslist = client.getAllNews(id,null,null);
+    
          %>
         <div class="container">
              <div class="jumbotron">
-                 <img src="data:image;base64,${img}" class="profile"></img><h5><%= a.getAuthorName().getValue() %></h5>
-                 <p><%= a.getAuthorCity().getValue() %></p>
-                 <div class="col-md-12">
-                 <div class="card" style="height: 100%;">
+                 <div class="row">
+                     <div class="col-md-2">
+                         <img src="<%=imgstr%>" class="profile"></img>
+                     </div>
+                     <div class="col-md-2">
+                         <br><br>
+                         <h5><%= a.getAuthorName().getValue() %></h5>
+                         <p><%= a.getAuthorCity().getValue() %></p>
+                     </div>
+                 </div>
+                   <br>
+                   <div class="row"><a class="btn btn-primary" href="addNews.jsp" role="button">Add News</a></div>
+                   <% for( News n: newslist.getNews() ) { %>
+                   <div class="row">  
+                    <div class="col-md-12">
+                     <div class="card" style="height: 100%;">
                      <div class="card-body">
-                         <h4 class="card-title">Title</h4>
-                         <h6 class="card-subtitle mb-2 text-muted">time</h6>
-                         <p class="card-text">Some quick example text to build on the card title and make up the bulk Some quick example text to build on the card title and make up the bulk</p>
+                         <h4 class="card-title"><%= n.getTitle().getValue()  %></h4>
+                         <h6 class="card-subtitle mb-2 text-muted"><%=  n.getDatetime().toString()  %></h6>
+                         <p class="card-text"><%=  n.getDescription().getValue().substring(0, 9) %></p>
                          <a href="#" class="card-link">Edit</a>
                          <a href="#" class="card-link">Delete</a>
                      </div>
                  </div>
                  </div>
+                   </div>
+                    <% } %>     
              </div>.
          </div>
     </body>
