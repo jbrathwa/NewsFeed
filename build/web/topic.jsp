@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="java.util.Base64"%>
+<%@page import="java.util.List"%>
 <%@page import="service.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
@@ -38,9 +39,9 @@
 
                     String topic = request.getParameter("topic");
                     ArrayOfNews newslist = client.getAllNews(0,topic,null);
+                   
                     
-
-                    //byte[] img = n.getImagedata().getValue();
+                            //byte[] img = n.getImagedata().getValue();
                     //String imgstr ="data:image/jpeg;base64,"+ Base64.getEncoder().encodeToString(img);
         %>
         <div class="container">
@@ -48,26 +49,13 @@
         <div class="jumbotron">
             <h1>${ param.topic }</h1>
             
-            <div class="row"> 
+            <!--<div class="row"> 
                 <div class="col-md-12"> 
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                     <% for(News n:newslist.getNews()){%>
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="card mb-3">
-                                <div class="row no-gutters">
-                                    <div class="col-md-4">
-                                        <img src="https://via.placeholder.com/620" class="card-img" alt="...">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
+                       
                         <div class="carousel-item">
                             <div class="card mb-3">
                                 <div class="row no-gutters">
@@ -76,31 +64,18 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        <h5 class="card-title"><%= n.getTitle().getValue() %></h5>
+                                        <p class="card-text"><%= n.getDescription().getValue().substring(0,70) %>....</p>
+                                        <p class="card-text"><small class="text-muted">Last updated <%= String.valueOf(n.getDatetime().getHour()) %> Hours ago o</small></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="carousel-item">
-                            <div class="card mb-3">
-                                <div class="row no-gutters">
-                                    <div class="col-md-4">
-                                        <img src="https://via.placeholder.com/620" class="card-img" alt="...">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                       
+                        
                     </div>
+                   <% } %>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -111,7 +86,7 @@
                 <span class="sr-only">Next</span>
                 </a>
                 </div>
-            </div>
+            </div>-->
             
             <br><br>
             <div class="row">

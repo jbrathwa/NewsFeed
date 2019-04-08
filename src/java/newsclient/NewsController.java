@@ -45,8 +45,10 @@ public class NewsController extends HttpServlet {
       
            int edit = Integer.parseInt(request.getParameter("edit"));
            
+            NewsService service = new NewsService();
+            INewsService client = service.getBasicHttpBindingINewsService();
            
-        
+        if(edit != 2){
            String title = request.getParameter("title");
            String city = request.getParameter("city");
            String topic = request.getParameter("topic");
@@ -60,8 +62,6 @@ public class NewsController extends HttpServlet {
             InputStream is = imgfile.getInputStream();
             byte[] img = IOUtils.toByteArray(is);
             
-            NewsService service = new NewsService();
-            INewsService client = service.getBasicHttpBindingINewsService();
             
            News news = new News();
            ObjectFactory obj = new ObjectFactory();
@@ -102,7 +102,7 @@ public class NewsController extends HttpServlet {
            Integer authId = (Integer)session.getAttribute("authorid");
           
            
-           
+          
            if(edit==0){
                 Integer res = client.addNews(news, authId);
                 if(res != null){
@@ -111,7 +111,7 @@ public class NewsController extends HttpServlet {
                 else{
                     response.sendRedirect("addNews.jsp");
                 }
-           }else{
+           }else if(edit==1){
                Integer newsid =Integer.parseInt(request.getParameter("id"));
                news.setNewsId(newsid);
                
@@ -124,6 +124,13 @@ public class NewsController extends HttpServlet {
                 }
                
            }
+        }
+        
+        if(edit==2){
+            Integer newsid =Integer.parseInt(request.getParameter("id"));
+            client.removeNews(newsid);
+            response.sendRedirect("dashboard.jsp");
+        }
            
            
     }
