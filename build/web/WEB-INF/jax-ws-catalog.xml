@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
-    <system systemId="http://localhost:8733/Design_Time_Addresses/NewsService/?wsdl" uri="src/conf/xml-resources/web-service-references/WsClient/wsdl/localhost_8733/Design_Time_Addresses/NewsService/.wsdl"/>
-    <system systemId="http://localhost:8733/Design_Time_Addresses/NewsService/?xsd=xsd0" uri="src/conf/xml-resources/web-service-references/WsClient/wsdl/localhost_8733/Design_Time_Addresses/NewsService/.xsd_xsd0.xsd"/>
-    <system systemId="http://localhost:8733/Design_Time_Addresses/NewsService/?xsd=xsd1" uri="src/conf/xml-resources/web-service-references/WsClient/wsdl/localhost_8733/Design_Time_Addresses/NewsService/.xsd_xsd1.xsd"/>
-    <system systemId="http://localhost:8733/Design_Time_Addresses/NewsService/?xsd=xsd2" uri="src/conf/xml-resources/web-service-references/WsClient/wsdl/localhost_8733/Design_Time_Addresses/NewsService/.xsd_xsd2.xsd"/>
+    <system systemId="http://localhost:8733/Design_Time_Addresses/NewsService/?wsdl" uri="wsdl/localhost_8733/Design_Time_Addresses/NewsService/.wsdl"/>
+    <system systemId="http://localhost:8733/Design_Time_Addresses/NewsService/?xsd=xsd0" uri="wsdl/localhost_8733/Design_Time_Addresses/NewsService/.xsd_xsd0.xsd"/>
+    <system systemId="http://localhost:8733/Design_Time_Addresses/NewsService/?xsd=xsd1" uri="wsdl/localhost_8733/Design_Time_Addresses/NewsService/.xsd_xsd1.xsd"/>
+    <system systemId="http://localhost:8733/Design_Time_Addresses/NewsService/?xsd=xsd2" uri="wsdl/localhost_8733/Design_Time_Addresses/NewsService/.xsd_xsd2.xsd"/>
+    <system systemId="http://localhost:8733/NewsService/?wsdl" uri="wsdl/localhost_8733/NewsService/.wsdl"/>
+    <system systemId="http://localhost:8733/NewsService/?xsd=xsd0" uri="wsdl/localhost_8733/NewsService/.xsd_xsd0.xsd"/>
+    <system systemId="http://localhost:8733/NewsService/?xsd=xsd1" uri="wsdl/localhost_8733/NewsService/.xsd_xsd1.xsd"/>
+    <system systemId="http://localhost:8733/NewsService/?xsd=xsd2" uri="wsdl/localhost_8733/NewsService/.xsd_xsd2.xsd"/>
 </catalog>

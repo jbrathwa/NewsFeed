@@ -4,6 +4,8 @@
     Author     : Jayraj Rathwa
 --%>
 
+<%@page import="java.util.Base64"%>
+<%@page import="service.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
@@ -30,7 +32,17 @@
     </head>
     <body>
         <jsp:include page="header.jsp" />
-     
+        <%          
+                    NewsService service = new NewsService();
+                    INewsService client = service.getBasicHttpBindingINewsService();
+
+                    String topic = request.getParameter("topic");
+                    ArrayOfNews newslist = client.getAllNews(0,topic,null);
+                    
+
+                    //byte[] img = n.getImagedata().getValue();
+                    //String imgstr ="data:image/jpeg;base64,"+ Base64.getEncoder().encodeToString(img);
+        %>
         <div class="container">
             
         <div class="jumbotron">
@@ -103,17 +115,19 @@
             
             <br><br>
             <div class="row">
-                &nbsp;&nbsp;&nbsp;<h3>Top News</h3>
+                &nbsp;&nbsp;&nbsp;<h3>${ param.topic } News</h3>
                 <div class="col-md-12">
                 <div class="list-group">
-                    <a href="news.jsp" class="list-group-item list-group-item-action">
+                    <% for(News n:newslist.getNews()){ %>
+                    <a href="news.jsp?id=<%= n.getNewsId().intValue() %>" class="list-group-item list-group-item-action">
                         <div class="d-flex  justify-content-between">
-                           <h5 class="mb-1">List group item heading</h5>
-                           <small>3 days ago</small>
+                           <h5 class="mb-1"><%= n.getTitle().getValue() %></h5>
+                           <small><%= String.valueOf(n.getDatetime().getHour()) %> Hours ago </small>
                         </div>
-                        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                        <small>Donec id elit non mi porta.</small>
+                        <small>Report by: <%= n.getAuthor().getValue().getAuthorName().getValue() %></small>
+                        <p class="mb-1"><%= n.getDescription().getValue().substring(0,70) %>....</p>
                     </a>
+                    <% } %>
                 </div>
                 </div>    
             </div> 

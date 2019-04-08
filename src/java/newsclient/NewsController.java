@@ -43,6 +43,10 @@ public class NewsController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
       
+           int edit = Integer.parseInt(request.getParameter("edit"));
+           
+           
+        
            String title = request.getParameter("title");
            String city = request.getParameter("city");
            String topic = request.getParameter("topic");
@@ -59,48 +63,66 @@ public class NewsController extends HttpServlet {
             NewsService service = new NewsService();
             INewsService client = service.getBasicHttpBindingINewsService();
             
-            News news = new News();
+           News news = new News();
            ObjectFactory obj = new ObjectFactory();
            JAXBElement<String> xtitle = obj.createNewsTitle(title);
            news.setTitle(xtitle);
            JAXBElement<String> xcity = obj.createNewsNewsCity(city);
-           news.setTitle(xcity);
+           news.setNewsCity(xcity);
            JAXBElement<String> xdes = obj.createNewsDescription(description);
-           news.setTitle(xdes);
+           news.setDescription(xdes);
            JAXBElement<String> xtopic  = obj.createNewsTag(topic);
-           news.setTitle(xtopic);
+           news.setTag(xtopic);
+           
+           if(imgfile!=null){
            JAXBElement<byte[]> ximg = obj.createNewsImagedata(img);
            news.setImagedata(ximg);
            JAXBElement<String> ximgname = obj.createNewsImage(imgname);
            news.setImage(ximgname);
-             try{
-           SimpleDateFormat datef = new SimpleDateFormat("EEE, MMM dd , yyyy");
-           Date date = datef.parse(datestr);
-           GregorianCalendar c = new GregorianCalendar();
+           }
+           else{
+               news.setImage(null);
+               news.setImagedata(null);
+           }
+           
+           try{
+            SimpleDateFormat datef = new SimpleDateFormat("EEE, MMM dd , yyyy");
+            Date date = datef.parse(datestr);
+            GregorianCalendar c = new GregorianCalendar();
             c.setTime(date);
             XMLGregorianCalendar xdate= DatatypeFactory.newInstance().newXMLGregorianCalendar(c);
             news.setDatetime(xdate);
            }
            catch(Exception e){
-               
+              
            }
           
           
            HttpSession session = request.getSession();
            Integer authId = (Integer)session.getAttribute("authorid");
-           Author author = new Author();
-           author.setAuthorId(authId);
-           
-           JAXBElement<Author> xauthor = obj.createAuthor(author);
-           news.setAuthor(xauthor);
+          
            
            
-           Integer res = client.addNews(news);
-           if(res != null){
-               response.sendRedirect("news.jsp?id="+res.toString());
-           }
-           else{
-               response.sendRedirect("addNews.jsp");
+           if(edit==0){
+                Integer res = client.addNews(news, authId);
+                if(res != null){
+                    response.sendRedirect("news.jsp?id="+res.intValue());
+                }
+                else{
+                    response.sendRedirect("addNews.jsp");
+                }
+           }else{
+               Integer newsid =Integer.parseInt(request.getParameter("id"));
+               news.setNewsId(newsid);
+               
+                News res = client.updateNews(news);
+                if(res != null){
+                    response.sendRedirect("news.jsp?id="+res.getNewsId().intValue());
+                }
+                else{
+                    response.sendRedirect("updateNews.jsp?id="+newsid.intValue());
+                }
+               
            }
            
            

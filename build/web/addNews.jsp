@@ -19,10 +19,9 @@
     </head>
     <body>
         <jsp:include page="header.jsp" />
-        
         <div class="container">
             <div class="jumbotron">
-                <form action="NewsController " method="post" enctype="multipart/form-data">
+                <form action="NewsController?edit=0" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Headline:</label>
                         <input type="text" class="form-control"  name="title" id="title" placeholder="News Headline">

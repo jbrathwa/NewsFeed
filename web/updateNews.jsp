@@ -1,15 +1,16 @@
 <%-- 
-    Document   : addNews
-    Created on : Apr 6, 2019, 8:54:25 PM
+    Document   : updateNews
+    Created on : Apr 8, 2019, 5:07:21 AM
     Author     : Jayraj Rathwa
 --%>
 
+<%@page import="service.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Add New News</title>
+        <title>Update News</title>
         
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -19,20 +20,29 @@
     </head>
     <body>
         <jsp:include page="header.jsp" />
+        <% 
+                    NewsService service = new NewsService();
+                    INewsService client = service.getBasicHttpBindingINewsService();
+
+                    Integer id = Integer.parseInt(request.getParameter("id"));
+                   
+                    News n = client.getNews(id);
+        
+        %>
         <div class="container">
             <div class="jumbotron">
-                <form action="NewsController?edit=0" method="post" enctype="multipart/form-data">
+                <form action="NewsController?edit=1&id=<%=id%>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Headline:</label>
-                        <input type="text" class="form-control"  name="title" id="title" placeholder="News Headline">
+                        <input type="text" class="form-control"  name="title" id="title" value="<%= n.getTitle().getValue() %>">
                     </div>
                     <div class="form-group">
                         <label for="time">Date:</label>
-                        <input type="date" class="form-control"  name="datetime" id="time">
+                        <input type="date" class="form-control"  name="datetime" id="time" value="<%= n.getDatetime().toString()  %>">
                     </div>
                     <div class="form-group">
                         <label for="city">City:</label>
-                        <input type="text" class="form-control"  name="city" id="city">
+                        <input type="text" class="form-control"  name="city" id="city" value="<%=  n.getNewsCity().getValue() %>">
                     </div>
                      <div class="form-group">
                          <label for="topic">Topic:</label>
@@ -49,7 +59,7 @@
                      </div>
                      <div class="form-group">
                         <label for="description">Description:</label>
-                        <textarea  class="form-control"  rows="10" name="description" id="description" placeholder="Write Here..."></textarea>
+                        <textarea  class="form-control"  rows="10" name="description" id="description"><%= n.getDescription().getValue() %></textarea>
                      </div>
                      <div class="form-group">
                         <label for="image">News Image:</label>

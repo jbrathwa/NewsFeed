@@ -56,7 +56,6 @@ public class ObjectFactory {
     private final static QName _UploadImageImagedata_QNAME = new QName("http://tempuri.org/", "imagedata");
     private final static QName _UploadImageImagename_QNAME = new QName("http://tempuri.org/", "imagename");
     private final static QName _GetImageResponseGetImageResult_QNAME = new QName("http://tempuri.org/", "getImageResult");
-    private final static QName _GetAllNewsAuthorId_QNAME = new QName("http://tempuri.org/", "authorId");
     private final static QName _GetAllNewsTag_QNAME = new QName("http://tempuri.org/", "tag");
     private final static QName _GetAllNewsNewsCity_QNAME = new QName("http://tempuri.org/", "newsCity");
     private final static QName _GetAllNewsResponseGetAllNewsResult_QNAME = new QName("http://tempuri.org/", "getAllNewsResult");
@@ -588,15 +587,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://tempuri.org/", name = "getImageResult", scope = GetImageResponse.class)
     public JAXBElement<byte[]> createGetImageResponseGetImageResult(byte[] value) {
         return new JAXBElement<byte[]>(_GetImageResponseGetImageResult_QNAME, byte[].class, GetImageResponse.class, ((byte[]) value));
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Integer }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://tempuri.org/", name = "authorId", scope = GetAllNews.class)
-    public JAXBElement<Integer> createGetAllNewsAuthorId(Integer value) {
-        return new JAXBElement<Integer>(_GetAllNewsAuthorId_QNAME, Integer.class, GetAllNews.class, value);
     }
 
     /**

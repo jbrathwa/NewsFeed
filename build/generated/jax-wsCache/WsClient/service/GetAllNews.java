@@ -39,8 +39,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "getAllNews")
 public class GetAllNews {
 
-    @XmlElementRef(name = "authorId", namespace = "http://tempuri.org/", type = JAXBElement.class)
-    protected JAXBElement<Integer> authorId;
+    protected Integer authorId;
     @XmlElementRef(name = "tag", namespace = "http://tempuri.org/", type = JAXBElement.class)
     protected JAXBElement<String> tag;
     @XmlElementRef(name = "newsCity", namespace = "http://tempuri.org/", type = JAXBElement.class)
@@ -51,10 +50,10 @@ public class GetAllNews {
      * 
      * @return
      *     possible object is
-     *     {@link JAXBElement }{@code <}{@link Integer }{@code >}
+     *     {@link Integer }
      *     
      */
-    public JAXBElement<Integer> getAuthorId() {
+    public Integer getAuthorId() {
         return authorId;
     }
 
@@ -63,10 +62,10 @@ public class GetAllNews {
      * 
      * @param value
      *     allowed object is
-     *     {@link JAXBElement }{@code <}{@link Integer }{@code >}
+     *     {@link Integer }
      *     
      */
-    public void setAuthorId(JAXBElement<Integer> value) {
+    public void setAuthorId(Integer value) {
         this.authorId = value;
     }
 

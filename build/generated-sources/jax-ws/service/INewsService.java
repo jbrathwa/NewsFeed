@@ -91,6 +91,7 @@ public interface INewsService {
     /**
      * 
      * @param news
+     * @param authorId
      * @return
      *     returns java.lang.Integer
      */
@@ -100,7 +101,9 @@ public interface INewsService {
     @ResponseWrapper(localName = "addNewsResponse", targetNamespace = "http://tempuri.org/", className = "service.AddNewsResponse")
     public Integer addNews(
         @WebParam(name = "news", targetNamespace = "http://tempuri.org/")
-        News news);
+        News news,
+        @WebParam(name = "authorId", targetNamespace = "http://tempuri.org/")
+        Integer authorId);
 
     /**
      * 

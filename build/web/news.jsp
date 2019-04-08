@@ -20,13 +20,13 @@
     </head>
     <body>
          <jsp:include page="header.jsp" />
-           <% NewsService service = new NewsService();
-                   INewsService client = service.getBasicHttpBindingINewsService();
+            <%      NewsService service = new NewsService();
+                    INewsService client = service.getBasicHttpBindingINewsService();
+
+                    Integer id = Integer.parseInt(request.getParameter("id"));
                    
-                   String idstr = request.getParameter("id");
-                   Integer id = Integer.getInteger(idstr);
-                   News n = client.getNews(id);
-                   
+                    News n = client.getNews(id);
+
                     byte[] img = n.getImagedata().getValue();
                     String imgstr ="data:image/jpeg;base64,"+ Base64.getEncoder().encodeToString(img);
            %>

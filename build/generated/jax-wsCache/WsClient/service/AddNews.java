@@ -20,6 +20,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
  *         &lt;element name="news" type="{http://schemas.datacontract.org/2004/07/NewsService}News" minOccurs="0"/&gt;
+ *         &lt;element name="authorId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -30,13 +31,15 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "news"
+    "news",
+    "authorId"
 })
 @XmlRootElement(name = "addNews")
 public class AddNews {
 
     @XmlElementRef(name = "news", namespace = "http://tempuri.org/", type = JAXBElement.class)
     protected JAXBElement<News> news;
+    protected Integer authorId;
 
     /**
      * Gets the value of the news property.
@@ -60,6 +63,30 @@ public class AddNews {
      */
     public void setNews(JAXBElement<News> value) {
         this.news = value;
+    }
+
+    /**
+     * Gets the value of the authorId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Integer }
+     *     
+     */
+    public Integer getAuthorId() {
+        return authorId;
+    }
+
+    /**
+     * Sets the value of the authorId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Integer }
+     *     
+     */
+    public void setAuthorId(Integer value) {
+        this.authorId = value;
     }
 
 }

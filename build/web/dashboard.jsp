@@ -60,7 +60,7 @@
                          <h4 class="card-title"><%= n.getTitle().getValue()  %></h4>
                          <h6 class="card-subtitle mb-2 text-muted"><%=  n.getDatetime().toString()  %></h6>
                          <p class="card-text"><%=  n.getDescription().getValue().substring(0, 9) %></p>
-                         <a href="#" class="card-link">Edit</a>
+                         <a href="updateNews.jsp?id=<%= n.getNewsId().intValue() %>" class="card-link">Edit</a>
                          <a href="#" class="card-link">Delete</a>
                      </div>
                  </div>

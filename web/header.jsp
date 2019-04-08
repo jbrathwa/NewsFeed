@@ -54,6 +54,7 @@
                 <% if(session.getAttribute("authorid") == null){ %>
                     <a class="btn btn-success" href="login.jsp" role="button">Login</a>
                 <% }else{ %>
+                    <a class="btn btn-info" href="dashboard.jsp" role="button">My Posts</a>
                     <a class="btn btn-success" href="LoginController?login=1" role="button">Logout</a>
                 <% } %>    
             </li>  
